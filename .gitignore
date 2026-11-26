@@ -1,0 +1,26 @@
+# 依赖
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# 环境变量（含密钥，绝对不能上传）
+.env
+.env.local
+.env.*.local
+
+# 日志与缓存
+*.log
+npm-debug.log*
+.cache/
+.vercel
+
+# 编辑器与系统文件
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 构建产物
+dist/
+build/

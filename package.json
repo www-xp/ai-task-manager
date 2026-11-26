@@ -2,6 +2,7 @@
   "name": "ai-name-generator",
   "version": "1.0.0",
   "private": true,
+  "description": "AI 起名平台 · 多模型切换 · 流式输出",
   "dependencies": {
     "@supabase/supabase-js": "^2.43.0"
   }

@@ -2,147 +2,69 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>AI 起名 · 取名助手</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 起名平台</title>
 <style>
-  :root{
-    --ink:#16262c;
-    --ink-2:#5b6f77;
-    --line:#e4eceb;
-    --brand:#0f7a70;
-    --brand-d:#0a5750;
-    --brand-l:#eaf6f3;
-    --gold:#b98a45;
-    --bg:#f2f6f5;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  :root{--ink:#16262c;--sub:#5b6f77;--line:#e4eceb;--brand:#0f7a70;--deep:#0a5750;--light:#eaf6f3}
+  *{box-sizing:border-box;margin:0;padding:0}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-    color:var(--ink);
-    background:
-      radial-gradient(900px 500px at 15% -8%,#d5efea 0%,transparent 62%),
-      radial-gradient(800px 460px at 100% 4%,#f1f4e4 0%,transparent 58%),
-      var(--bg);
+    color:var(--ink);min-height:100vh;padding:34px 16px 60px;
+    background:radial-gradient(900px 500px at 15% -8%,#d5efea 0%,transparent 62%),
+               radial-gradient(800px 460px at 100% 4%,#f1f4e4 0%,transparent 58%),#f2f6f5;
     background-attachment:fixed;
-    min-height:100vh;
-    padding:34px 16px 60px;
   }
   .wrap{max-width:640px;margin:0 auto}
-
-  /* ---------- 头部 ---------- */
   header{text-align:center;margin-bottom:26px}
-  .seal{
-    display:inline-flex;align-items:center;justify-content:center;
-    width:44px;height:44px;margin-bottom:14px;
-    background:linear-gradient(145deg,#12918a,var(--brand-d));
-    border-radius:12px;color:#fff;font-size:19px;font-weight:700;
-    box-shadow:0 8px 20px rgba(10,87,80,.28);
-  }
-  header h1{
-    font-size:26px;letter-spacing:5px;font-weight:600;
-    color:var(--brand-d);
-    font-family:"Songti SC","STSong","Noto Serif SC",serif;
-  }
-  header .sub{
-    margin-top:9px;font-size:12.5px;letter-spacing:2px;color:var(--ink-2);
-  }
-  header .rule{
-    width:46px;height:1px;margin:14px auto 0;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  }
-
-  /* ---------- 卡片 ---------- */
-  .card{
-    background:#fff;border:1px solid var(--line);border-radius:20px;
-    padding:22px 20px 24px;
-    box-shadow:0 14px 40px rgba(18,60,58,.08),0 2px 6px rgba(18,60,58,.04);
-  }
-  .card + .card{margin-top:18px}
-
+  .seal{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
+    margin-bottom:14px;background:linear-gradient(145deg,#12918a,var(--deep));border-radius:12px;
+    color:#fff;font-size:19px;font-weight:700;box-shadow:0 8px 20px rgba(10,87,80,.28)}
+  h1{font-size:26px;letter-spacing:5px;font-weight:600;color:var(--deep);
+    font-family:"Songti SC","STSong","Noto Serif SC",serif}
+  .sub{margin-top:9px;font-size:12.5px;letter-spacing:2px;color:var(--sub)}
+  .rule{width:46px;height:1px;margin:14px auto 0;background:linear-gradient(90deg,transparent,#b98a45,transparent)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 20px 24px;
+    box-shadow:0 14px 40px rgba(18,60,58,.08)}
+  .card+.card{margin-top:18px}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .field{margin-bottom:14px}
-  .field label{
-    display:flex;align-items:center;gap:6px;
-    font-size:12.5px;color:var(--ink-2);margin-bottom:7px;letter-spacing:.5px;
-  }
-  .field label::before{
-    content:"";width:3px;height:11px;border-radius:2px;
-    background:linear-gradient(180deg,#12918a,#8cc9c1);
-  }
-  input,select,textarea{
-    width:100%;padding:11px 13px;
-    font-size:14.5px;font-family:inherit;color:var(--ink);
-    background:#fbfdfd;
-    border:1px solid var(--line);border-radius:11px;
-    outline:none;
-    transition:border-color .2s,box-shadow .2s,background .2s;
-  }
+  .field label{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--sub);
+    margin-bottom:7px;letter-spacing:.5px}
+  .field label::before{content:"";width:3px;height:11px;border-radius:2px;
+    background:linear-gradient(180deg,#12918a,#8cc9c1)}
+  input,select,textarea{width:100%;padding:11px 13px;font-size:14.5px;font-family:inherit;
+    color:var(--ink);background:#fbfdfd;border:1px solid var(--line);border-radius:11px;outline:none;
+    transition:border-color .2s,box-shadow .2s,background .2s}
   input::placeholder,textarea::placeholder{color:#a9b8b7;font-size:13.5px}
-  input:focus,select:focus,textarea:focus{
-    background:#fff;border-color:#7ec3ba;
-    box-shadow:0 0 0 3.5px rgba(15,122,112,.10);
-  }
-  textarea{resize:vertical;min-height:66px;line-height:1.6}
-  select{appearance:none;background-image:
-    linear-gradient(45deg,transparent 50%,#93a7a6 50%),
-    linear-gradient(135deg,#93a7a6 50%,transparent 50%);
+  input:focus,select:focus,textarea:focus{background:#fff;border-color:#7ec3ba;
+    box-shadow:0 0 0 3.5px rgba(15,122,112,.10)}
+  textarea{resize:vertical;min-height:60px;line-height:1.6}
+  select{appearance:none;padding-right:34px;
+    background-image:linear-gradient(45deg,transparent 50%,#93a7a6 50%),
+                     linear-gradient(135deg,#93a7a6 50%,transparent 50%);
     background-position:calc(100% - 18px) 19px,calc(100% - 13px) 19px;
-    background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:34px}
-  /* ---------- 按钮 ---------- */
-  #btn{
-    position:relative;width:100%;padding:14px;
-    font-size:15px;font-family:inherit;font-weight:600;letter-spacing:2px;
-    color:#fff;
-    background:linear-gradient(135deg,#12958c 0%,var(--brand) 45%,var(--brand-d) 100%);
-    border:none;border-radius:12px;cursor:pointer;
-    box-shadow:0 10px 22px rgba(10,87,80,.26),inset 0 1px 0 rgba(255,255,255,.18);
-    transition:transform .14s,box-shadow .22s,opacity .2s;
-    overflow:hidden;
-  }
-  #btn::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.32) 50%,transparent 62%);
-    transform:translateX(-120%);
-  }
-  #btn:hover:not(:disabled)::after{transform:translateX(120%);transition:transform .7s ease}
-  #btn:active:not(:disabled){transform:scale(.985);box-shadow:0 5px 14px rgba(10,87,80,.28)}
-  #btn:disabled{opacity:.62;cursor:not-allowed;box-shadow:none}
+    background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+  #btn{position:relative;width:100%;padding:14px;font-size:15px;font-family:inherit;font-weight:600;
+    letter-spacing:2px;color:#fff;background:linear-gradient(135deg,#12958c,var(--brand) 45%,var(--deep));
+    border:none;border-radius:12px;cursor:pointer;overflow:hidden;
+    box-shadow:0 10px 22px rgba(10,87,80,.26)}
+  #btn:active:not(:disabled){transform:scale(.985)}
+  #btn:disabled{opacity:.62;cursor:not-allowed}
   #btn .dots{display:none;letter-spacing:3px}
   #btn.loading .btn-text{display:none}
   #btn.loading .dots{display:inline}
-
-  /* ---------- 结果区 ---------- */
-  .out-head{
-    display:flex;align-items:center;justify-content:space-between;
-    margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #f0f4f4;
-  }
-  .out-title{font-size:13px;letter-spacing:2px;color:var(--brand-d);font-weight:600}
-  .mini{
-    padding:6px 14px;font-size:12px;font-family:inherit;letter-spacing:1px;
-    color:var(--brand-d);background:var(--brand-l);
-    border:1px solid #d3eae6;border-radius:8px;cursor:pointer;
-    transition:background .18s,transform .12s;
-  }
-  .mini:hover{background:#dff1ed}
-  .mini:active{transform:scale(.96)}
-
-  #result{
-    min-height:230px;padding:4px 2px;
-    font-size:15.5px;line-height:2.05;white-space:pre-line;color:var(--ink);
-  }
-  #result.empty{
-    display:flex;align-items:center;justify-content:center;
-    color:#a5b5b4;font-size:13.5px;letter-spacing:1px;
-    border:1px dashed #e2ecea;border-radius:12px;background:#fbfdfd;
-  }
+  .out-head{display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #f0f4f4}
+  .out-title{font-size:13px;letter-spacing:2px;color:var(--deep);font-weight:600}
+  .tag{font-size:11.5px;color:var(--brand);background:var(--light);padding:3px 9px;
+    border-radius:6px;margin-left:8px;letter-spacing:0}
+  .mini{padding:6px 14px;font-size:12px;font-family:inherit;letter-spacing:1px;color:var(--deep);
+    background:var(--light);border:1px solid #d3eae6;border-radius:8px;cursor:pointer}
+  #result{min-height:210px;padding:4px 2px;font-size:15.5px;line-height:2.05;
+    white-space:pre-line;color:var(--ink)}
+  #result.empty{display:flex;align-items:center;justify-content:center;color:#a5b5b4;
+    font-size:13.5px;letter-spacing:1px;border:1px dashed #e2ecea;border-radius:12px;background:#fbfdfd}
   #result.error{color:#b4342f}
-  .caret{
-    display:inline-block;width:8px;height:16px;margin-left:2px;
-    background:var(--brand);border-radius:2px;vertical-align:-2px;
-    animation:blink 1s steps(2) infinite;
-  }
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-
   footer{text-align:center;margin-top:26px;font-size:11.5px;letter-spacing:1.5px;color:#a8b8b6}
 </style>
 </head>
@@ -151,7 +73,7 @@
   <header>
     <div class="seal">名</div>
     <h1>AI 起名</h1>
-    <p class="sub">诗意取名 · 字义考究 · 一诺千金</p>
+    <p class="sub">多模型 · 流式生成 · 历史留存</p>
     <div class="rule"></div>
   </header>
 
@@ -170,13 +92,24 @@
       </div>
     </div>
 
-    <div class="field">
-      <label>风格取向</label>
-      <select id="style">
-        <option value="古风">古风雅韵</option>
-        <option value="简约现代">简约现代</option>
-        <option value="文雅书香">文雅书香</option>
-      </select>
+    <div class="row">
+      <div class="field">
+        <label>风格</label>
+        <select id="style">
+          <option value="古风">国风古韵</option>
+          <option value="现代简约">现代简约</option>
+          <option value="文雅书香">文雅书香</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>选择模型</label>
+        <select id="modelKey">
+          <option value="doubao">豆包（火山方舟）</option>
+          <option value="deepseek">DeepSeek</option>
+          <option value="qwen">通义千问</option>
+          <option value="kimi">Kimi</option>
+        </select>
+      </div>
     </div>
 
     <div class="field">
@@ -186,98 +119,100 @@
 
     <button id="btn">
       <span class="btn-text">开 始 取 名</span>
+      <span class="dots">· · ·</span>
     </button>
   </section>
 
   <section class="card">
     <div class="out-head">
-      <span class="out-title">取名结果</span>
+      <div>
+        <span class="out-title">取名结果</span>
+        <span class="tag" id="curModel">豆包</span>
+      </div>
       <button class="mini" id="copy">复制</button>
     </div>
-    <div id="result" class="empty">填写左侧信息，点击「开始取名」</div>
+    <div id="result" class="empty">填写信息后点击「开始取名」</div>
   </section>
 
-  <footer>Powered by Doubao · Supabase</footer>
+  <footer>Powered by 多模型网关 · Supabase</footer>
 </div>
+
 <script>
-const btn = document.getElementById('btn');
-const result = document.getElementById('result');
-const copyBtn = document.getElementById('copy');
+const $ = (id) => document.getElementById(id);
+const btn = $('btn');
+const result = $('result');
+const copyBtn = $('copy');
+const modelSel = $('modelKey');
+const curModel = $('curModel');
 
 let lastText = '';
-let typing = false;
+let busy = false;
 
-/* 打字机效果：逐字渲染，模拟流式输出 */
-function typeWriter(text, done) {
-  typing = true;
-  result.textContent = '';
-  result.classList.remove('empty', 'error');
-  const caret = document.createElement('span');
-  caret.className = 'caret';
-  result.appendChild(caret);
+const MODEL_LABEL = { doubao:'豆包', deepseek:'DeepSeek', qwen:'通义千问', kimi:'Kimi' };
 
-  let i = 0;
-  const step = Math.max(1, Math.round(text.length / 320)); // 控制总时长
-
-  const timer = setInterval(() => {
-    i += step;
-    result.textContent = text.slice(0, i);
-    result.appendChild(caret);
-    result.scrollIntoView({ block: 'nearest' });
-    if (i >= text.length) {
-      clearInterval(timer);
-      caret.remove();
-      typing = false;
-      done && done();
-    }
-  }, 22);
-}
-
-function showError(msg) {
-  result.classList.remove('empty');
-  result.classList.add('error');
-  result.textContent = msg;
-}
+modelSel.addEventListener('change', () => {
+  curModel.textContent = MODEL_LABEL[modelSel.value] || modelSel.value;
+});
 
 async function genName() {
-  if (typing) return;
+  if (busy) return;
+  busy = true;
 
   const data = {
-    surname: document.getElementById('surname').value.trim(),
-    gender: document.getElementById('gender').value,
-    style: document.getElementById('style').value,
-    mean: document.getElementById('mean').value.trim()
+    surname: $('surname').value.trim(),
+    gender: $('gender').value,
+    style: $('style').value,
+    mean: $('mean').value.trim(),
+    modelKey: modelSel.value
   };
 
   btn.disabled = true;
   btn.classList.add('loading');
-  result.classList.remove('empty', 'error');
-  result.textContent = '正在为您斟酌用字…';
+  result.className = '';
+  result.textContent = '';
   lastText = '';
 
   try {
-    const r = await fetch('/api/name', {
+    const res = await fetch('/api/name', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
 
-    const txt = (await r.text()).trim();
-
-    if (!r.ok) {
-      showError('请求失败（HTTP ' + r.status + '）：' + txt.slice(0, 100));
-      return;
-    }
-    if (!txt) {
-      showError('没有拿到结果，请稍后重试');
+    if (!res.ok || !res.body) {
+      const txt = await res.text().catch(() => '');
+      result.className = 'error';
+      result.textContent = `请求失败（HTTP ${res.status}）${txt ? '：' + txt.slice(0, 120) : ''}`;
       return;
     }
 
-    lastText = txt;
-    typeWriter(txt);
+    // 真正的流式读取：AI 吐一个字，这里就显示一个字
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder('utf-8');
+    let full = '';
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      full += decoder.decode(value, { stream: true });
+      result.textContent = full;
+      lastText = full;
+    }
+
+    if (full.includes('[ERROR]')) {
+      result.className = 'error';
+    } else if (full.includes('[WARN]')) {
+      // 已生成但没入库，保留结果并提示
+      result.textContent = full;
+    } else if (!full.trim()) {
+      result.className = 'error';
+      result.textContent = '没有返回内容，请重试';
+    }
   } catch (e) {
-    showError('网络异常：' + e.message);
+    result.className = 'error';
+    result.textContent = '网络异常：' + e.message;
   } finally {
+    busy = false;
     btn.disabled = false;
     btn.classList.remove('loading');
   }
@@ -290,14 +225,13 @@ copyBtn.addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(lastText);
     copyBtn.textContent = '已复制';
-    setTimeout(() => (copyBtn.textContent = '复制'), 1600);
   } catch {
     copyBtn.textContent = '复制失败';
-    setTimeout(() => (copyBtn.textContent = '复制'), 1600);
   }
+  setTimeout(() => (copyBtn.textContent = '复制'), 1500);
 });
 
-document.getElementById('surname').addEventListener('keydown', (e) => {
+$('surname').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') { e.preventDefault(); genName(); }
 });
 </script>
